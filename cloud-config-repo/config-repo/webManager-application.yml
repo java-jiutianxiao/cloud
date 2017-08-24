@@ -1,0 +1,37 @@
+server:
+  port: 8000
+  tomcat.max-threads: 0  
+  tomcat.uri-encoding: UTF-8  
+  context-path: /etpServer
+spring:
+  application:
+    name: client-web-service
+  datasource:  
+    url : jdbc:mysql://localhost:3306/test 
+    username : root  
+    password : 123456 
+    driverClassName : com.mysql.jdbc.Driver 
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+      
+logging:                               
+  level:
+    root: INFO
+    org.hibernate: INFO
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    org.hibernate.type.descriptor.sql.BasicExtractor: TRACE
+    com.spring.cloud.feign.UserFeignClient: DEBUG
+appMsg: 
+  hello: hello sir
+client-service:
+  ribbon:
+    listOfServers: http://localhost:8010
+hystrix:
+    command:
+        default:
+            execution:
+                isolation:
+                    thread:
+                        timeoutInMilliseconds: 5000
