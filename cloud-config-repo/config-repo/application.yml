@@ -6,5 +6,15 @@ debug: true
 logging:                               
   level:
     root: INFO
-
+hystrix:  
+  command:  
+    default:  
+      execution:  
+        isolation:  
+          thread:  
+            timeoutInMilliseconds: 30000 #缺省为1000  
+            hystrix:  
+  threadpool:  
+    default:  
+      coreSize: 500 #缺省为10  
   
